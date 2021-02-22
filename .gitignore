@@ -15,7 +15,6 @@
 /covert/build
 .externalNativeBuild
 .cxx
-.externalNativeBuild
 *.apk
 *.ap_
 *.aab

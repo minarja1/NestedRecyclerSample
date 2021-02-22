@@ -1,1 +1,34 @@
+*.iml
+.gradle
+/local.properties
+.idea/*
+.idea/
+.idea/misc.xml
+.history/
+.DS_Store
+.settings/
 /build
+/captures
+/dev
+/release
+/app/build
+/covert/build
+.externalNativeBuild
+.cxx
+*.apk
+*.ap_
+*.aab
+output.json
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+*.classpath
+
+*.pepk
+
+# Generated files
+bin/
+gen/
+out/
