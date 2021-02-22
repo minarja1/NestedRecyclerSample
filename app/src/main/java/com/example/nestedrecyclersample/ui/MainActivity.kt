@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initViews() {
         //create a populated list of sections
-        val sections = DataSource.createSections(numberOfSections = 100, itemsPerSection = 50)
+        val sections = DataSource.createSections(numberOfSections = 50, itemsPerSection = 25)
 
         //create an instance of ConcatAdapter
         concatAdapter = ConcatAdapter()
