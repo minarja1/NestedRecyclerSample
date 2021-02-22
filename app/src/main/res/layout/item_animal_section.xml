@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/sectionTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.TitleSection"
+        android:textColor="@color/onBackgroundSecondary"
+        tools:text="Cats" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/titledSectionRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_item_height"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        tools:itemCount="4"
+        tools:listitem="@layout/item_animal" />
+
+</LinearLayout>
