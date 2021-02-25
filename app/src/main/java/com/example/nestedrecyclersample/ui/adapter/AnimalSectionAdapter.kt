@@ -18,6 +18,8 @@ class AnimalSectionAdapter(
 ) {
     private val scrollStates = mutableMapOf<Int, Parcelable?>()
 
+    private val viewPool = RecyclerView.RecycledViewPool()
+
     override fun onViewRecycled(holder: BaseViewHolder<AnimalSection>) {
         super.onViewRecycled(holder)
 
@@ -40,6 +42,7 @@ class AnimalSectionAdapter(
 
         val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler)
         titledSectionRecycler?.run {
+            setRecycledViewPool(viewPool)
             this.layoutManager = layoutManager
             this.adapter = AnimalAdapter(item.animals)
         }
