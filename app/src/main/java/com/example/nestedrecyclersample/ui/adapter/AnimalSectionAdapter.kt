@@ -42,7 +42,7 @@ class AnimalSectionAdapter(
 
         val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler)
         titledSectionRecycler?.run {
-            setRecycledViewPool(viewPool)
+            this.setRecycledViewPool(viewPool)
             this.layoutManager = layoutManager
             this.adapter = AnimalAdapter(item.animals)
         }
