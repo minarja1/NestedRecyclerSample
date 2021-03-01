@@ -97,7 +97,7 @@ object DataSource {
         for (i in 0 until numberOfSections) {
             val animals = mutableListOf<Animal>()
             val title = titles.random()
-            val section = AnimalSection(title, animals)
+            val section = AnimalSection(title = title, animals = animals)
             for (j in 0 until itemsPerSection) {
                 animals.add(titlesToAnimals[title]!!.random())
             }
