@@ -29,10 +29,8 @@ class AnimalSectionAdapter(
 
         //save horizontal scroll state
         val key = getSectionID(holder.layoutPosition)
-        scrollStates?.set(
-            key,
+        scrollStates[key] =
             holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState()
-        )
     }
 
     override fun bind(
@@ -45,7 +43,7 @@ class AnimalSectionAdapter(
         val layoutManager =
             LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
 
-        layoutManager.initialPrefetchItemCount = 25
+        layoutManager.initialPrefetchItemCount = 4
 
         val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler)
         titledSectionRecycler?.run {
@@ -56,7 +54,7 @@ class AnimalSectionAdapter(
 
         //restore horizontal scroll state
         val key = getSectionID(viewHolder.layoutPosition)
-        val state = scrollStates?.get(key)
+        val state = scrollStates[key]
         if (state != null) {
             titledSectionRecycler.layoutManager?.onRestoreInstanceState(state)
         } else {
