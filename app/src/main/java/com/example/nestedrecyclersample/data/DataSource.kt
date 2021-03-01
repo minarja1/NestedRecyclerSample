@@ -1,5 +1,6 @@
 package com.example.nestedrecyclersample.data
 
+import androidx.recyclerview.widget.ConcatAdapter
 import com.example.nestedrecyclersample.data.domain.Animal
 import com.example.nestedrecyclersample.data.domain.AnimalSection
 
@@ -91,7 +92,7 @@ object DataSource {
      * [numberOfSections] the size of returned list of Sections
      * [itemsPerSection] the number of items inside each section
      */
-    fun createSections(numberOfSections: Int, itemsPerSection: Int): List<AnimalSection> {
+    fun createSections(numberOfSections: Int, itemsPerSection: Int): MutableList<AnimalSection> {
         val sections = mutableListOf<AnimalSection>()
 
         for (i in 0 until numberOfSections) {

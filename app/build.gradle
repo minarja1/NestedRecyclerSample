@@ -47,5 +47,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation("io.coil-kt:coil:1.1.1")
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-beta01'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-beta02'
+
+    api "com.squareup.moshi:moshi-kotlin:1.8.0"
+
 }

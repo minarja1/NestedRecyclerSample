@@ -9,19 +9,18 @@ import com.example.nestedrecyclersample.R
 import com.example.nestedrecyclersample.data.domain.AnimalSection
 import com.example.nestedrecyclersample.ui.adapter.base.BaseAdapter
 import com.example.nestedrecyclersample.ui.adapter.base.BaseViewHolder
-import java.util.*
 
 class AnimalSectionAdapter(
-        items: List<AnimalSection> = emptyList(),
+    items: List<AnimalSection> = emptyList(),
 ) : BaseAdapter<AnimalSection>(
-        R.layout.item_animal_section,
-        items,
+    R.layout.item_animal_section,
+    items,
 ) {
-    private val scrollStates = mutableMapOf<UUID, Parcelable?>()
+    private var scrollStates: MutableMap<String, LinearLayoutManager.SavedState?>? = mutableMapOf()
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
-    private fun getSectionID(position: Int): UUID {
+    private fun getSectionID(position: Int): String {
         return items[position].id
     }
 
@@ -30,19 +29,23 @@ class AnimalSectionAdapter(
 
         //save horizontal scroll state
         val key = getSectionID(holder.layoutPosition)
-        scrollStates[key] =
-                holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState()
+        scrollStates?.set(
+            key,
+            holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState() as LinearLayoutManager.SavedState
+        )
     }
 
     override fun bind(
-            itemView: View,
-            item: AnimalSection,
-            position: Int,
-            viewHolder: BaseViewHolderImp
+        itemView: View,
+        item: AnimalSection,
+        position: Int,
+        viewHolder: BaseViewHolderImp
     ) {
         itemView.findViewById<TextView>(R.id.sectionTitleTextView)?.text = item.title
         val layoutManager =
-                LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+
+        layoutManager.initialPrefetchItemCount = 25
 
         val titledSectionRecycler = itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler)
         titledSectionRecycler?.run {
@@ -53,7 +56,7 @@ class AnimalSectionAdapter(
 
         //restore horizontal scroll state
         val key = getSectionID(viewHolder.layoutPosition)
-        val state = scrollStates[key]
+        val state = scrollStates?.get(key)
         if (state != null) {
             titledSectionRecycler.layoutManager?.onRestoreInstanceState(state)
         } else {

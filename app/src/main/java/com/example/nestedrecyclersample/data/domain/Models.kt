@@ -3,7 +3,7 @@ package com.example.nestedrecyclersample.data.domain
 import java.util.*
 
 data class AnimalSection(
-    val id: UUID = UUID.randomUUID(),
+    val id: String = UUID.randomUUID().toString(),
     val title: String,
     val animals: List<Animal> = mutableListOf(),
 )
