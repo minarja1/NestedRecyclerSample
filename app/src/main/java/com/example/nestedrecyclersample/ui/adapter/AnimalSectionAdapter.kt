@@ -16,7 +16,7 @@ class AnimalSectionAdapter(
     R.layout.item_animal_section,
     items,
 ) {
-    private var scrollStates: MutableMap<String, LinearLayoutManager.SavedState?>? = mutableMapOf()
+    private val scrollStates: MutableMap<String, Parcelable?> = mutableMapOf()
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -31,7 +31,7 @@ class AnimalSectionAdapter(
         val key = getSectionID(holder.layoutPosition)
         scrollStates?.set(
             key,
-            holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState() as LinearLayoutManager.SavedState
+            holder.itemView.findViewById<RecyclerView>(R.id.titledSectionRecycler).layoutManager?.onSaveInstanceState()
         )
     }
 
